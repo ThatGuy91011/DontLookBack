@@ -12,8 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = .05f;
 
-    public Transform[] waypoints;
     public int check;
+    public Animator animator;
     private int cutsceneState = 0;
     private int currentWaypoint = 0;
     // Start is called before the first frame update
@@ -68,20 +68,26 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
+                animator.SetInteger("IsMoving", 1);
                 tf.position += tf.up * speed;
             }
-            if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow))
             {
+                animator.SetInteger("IsMoving", 1);
                 tf.position += tf.right * speed;
             }
-            if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
+                animator.SetInteger("IsMoving", 1);
                 tf.position -= tf.up * speed;
             }
-            if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow))
             {
+                animator.SetInteger("IsMoving", 1);
                 tf.position -= tf.right * speed;
             }
+            else
+                animator.SetInteger("IsMoving", 0);
         }
         
     }
