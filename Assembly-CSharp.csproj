@@ -67,6 +67,9 @@
     <Compile Include="Assets\Scripts\CubicleBehind.cs" />
     <Compile Include="Assets\Scripts\CubicleFrontBehind.cs" />
     <Compile Include="Assets\Scripts\CubicleText.cs" />
+    <Compile Include="Assets\Scripts\CWTalk.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\TextBox.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/KIRWALLS/Desktop/DontLookBack/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

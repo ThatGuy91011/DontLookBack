@@ -1,21 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class CubicleText : MonoBehaviour
+public class CWTalk : MonoBehaviour
 {
     public GameObject player;
-    public GameObject cubicle;
+    public GameObject person;
     public GameObject inventory;
     public Transform playertf;
     public float dist;
-    public Transform textBox;
-    public bool hasItem;
-    public string Item;
-    private Transform tf;
+    public GameObject textBox;
+    public Transform textBoxtf;
+    public Sprite normal;
+    public Sprite complete;
+    public Sprite after;
     public GameObject manager;
+    private Transform tf;
+
     public int check = 0;
     // Start is called before the first frame update
     void Start()
@@ -24,21 +25,19 @@ public class CubicleText : MonoBehaviour
         playertf = player.GetComponent<Transform>();
         tf = GetComponent<Transform>();
         inventory = GameObject.Find("Inventory").transform.GetChild(0).gameObject;
-        cubicle = transform.parent.gameObject;
+        person = transform.parent.gameObject;
+        textBox = person.transform.GetChild(2).gameObject;
+        textBoxtf = textBox.GetComponent<Transform>();
+        textBoxtf.localScale = new Vector3(0, 0);
+
         manager = GameObject.Find("GameManager");
-        textBox = cubicle.transform.GetChild(2).gameObject.GetComponent<Transform>();
-        textBox.localScale = new Vector3(0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasItem == false)
-        {
-            Item = "";
-        }
         dist = Vector3.Distance(playertf.position, tf.position);
-        if (dist > .5f && dist < .53f)
+        if (dist > .1f && dist < .2f)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -58,28 +57,39 @@ public class CubicleText : MonoBehaviour
 
         if (check == 1)
         {
-            if (hasItem == true)
+            if (manager.GetComponent<GameManager>().jimQuestStage == 2)
             {
-                if (Item == "Mug")
-                {
-                    inventory.GetComponent<Inventory>().mugGet = true;
-                    Debug.Log("Mug Get");
-                    manager.GetComponent<GameManager>().jimQuestStage = 1;
-                    hasItem = false;
-                }
+                textBox.GetComponent<SpriteRenderer>().sprite = after;
+
             }
-            if (textBox.localScale != new Vector3(.1f, .1f))
+
+            if (manager.GetComponent<GameManager>().jimQuestStage == 1)
             {
-                textBox.localScale += new Vector3(.01f, .01f);
+                textBox.GetComponent<SpriteRenderer>().sprite = complete;
+                inventory.GetComponent<Inventory>().mugGet = false;
+                inventory.GetComponent<Inventory>().penGet = true;
             }
+
+            if (manager.GetComponent<GameManager>().jimQuestStage == 0)
+            {
+                textBox.GetComponent<SpriteRenderer>().sprite = normal;
+            }
+
+
+
+            if (textBoxtf.localScale != new Vector3(.1f, .1f))
+            {
+                textBoxtf.localScale += new Vector3(.01f, .01f);
+            }
+
         }
 
         else if (check == 0)
         {
 
-            if (textBox.localScale != new Vector3(0,0))
+            if (textBoxtf.localScale != new Vector3(0, 0))
             {
-                textBox.localScale -= new Vector3(.01f, .01f);
+                textBoxtf.localScale -= new Vector3(.01f, .01f);
             }
         }
     }

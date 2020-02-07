@@ -5,14 +5,14 @@ using UnityEngine;
 public class CubicleBehind : MonoBehaviour
 {
     public Transform feet;
-    public GameObject cubicle;
+    public GameObject thing;
     private Transform tf;
     // Start is called before the first frame update
     void Start()
     {
         feet = GameObject.Find("Feet").GetComponent<Transform>();
         tf = GetComponent<Transform>();
-        cubicle = transform.parent.gameObject;
+        thing = transform.parent.gameObject;
     }
 
     // Update is called once per frame
@@ -20,11 +20,11 @@ public class CubicleBehind : MonoBehaviour
     {
         if (feet.position.y > tf.position.y)
         {
-            cubicle.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            thing.GetComponent<SpriteRenderer>().sortingOrder = 2;
         }
         else
         {
-            cubicle.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            thing.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
     }
 }
