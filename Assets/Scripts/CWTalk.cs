@@ -45,6 +45,23 @@ public class CWTalk : MonoBehaviour
                 {
                     player.GetComponent<Controller>().state = Controller.State.Nothing;
                     check = 1;
+                    if (inventory.GetComponent<Inventory>().penGet)
+                    {
+                        textBox.GetComponent<SpriteRenderer>().sprite = after;
+                    }
+
+                    else if (manager.GetComponent<GameManager>().jimQuestStage == 1)
+                    {
+                        textBox.GetComponent<SpriteRenderer>().sprite = complete;
+                        inventory.GetComponent<Inventory>().mugGet = false;
+                        inventory.GetComponent<Inventory>().penGet = true;
+                    }
+
+                    else
+                    {
+                        textBox.GetComponent<SpriteRenderer>().sprite = normal;
+                    }
+
                 }
                 else if (check == 1)
                 {
@@ -57,25 +74,6 @@ public class CWTalk : MonoBehaviour
 
         if (check == 1)
         {
-            if (manager.GetComponent<GameManager>().jimQuestStage == 2)
-            {
-                textBox.GetComponent<SpriteRenderer>().sprite = after;
-
-            }
-
-            if (manager.GetComponent<GameManager>().jimQuestStage == 1)
-            {
-                textBox.GetComponent<SpriteRenderer>().sprite = complete;
-                inventory.GetComponent<Inventory>().mugGet = false;
-                inventory.GetComponent<Inventory>().penGet = true;
-            }
-
-            if (manager.GetComponent<GameManager>().jimQuestStage == 0)
-            {
-                textBox.GetComponent<SpriteRenderer>().sprite = normal;
-            }
-
-
 
             if (textBoxtf.localScale != new Vector3(.1f, .1f))
             {
