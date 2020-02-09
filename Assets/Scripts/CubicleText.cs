@@ -17,6 +17,8 @@ public class CubicleText : MonoBehaviour
     private Transform tf;
     public GameObject manager;
     public int check = 0;
+
+    public bool bossGone = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,7 @@ public class CubicleText : MonoBehaviour
             Item = "";
         }
         dist = Vector3.Distance(playertf.position, tf.position);
-        if (dist > .5f && dist < .53f)
+        if (dist > 0 && dist < .17f)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {

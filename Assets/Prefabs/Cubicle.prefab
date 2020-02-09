@@ -514,7 +514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4501039695203857808}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.178, y: 0.09, z: -0.49719238}
+  m_LocalPosition: {x: 0.178, y: 0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4501039694221539638}
@@ -533,9 +533,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  cubicle: {fileID: 0}
+  inventory: {fileID: 0}
   playertf: {fileID: 0}
   dist: 0
   textBox: {fileID: 0}
+  hasItem: 0
+  Item: 
+  manager: {fileID: 0}
+  check: 0
+  bossGone: 0
 --- !u!1 &4501039695269335739
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feet: {fileID: 0}
+  thing: {fileID: 0}
 --- !u!1 &4501039695302136792
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,6 +633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feet: {fileID: 0}
+  thing: {fileID: 0}
 --- !u!114 &4501039695302136795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,3 +647,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   feet: {fileID: 0}
+  thing: {fileID: 0}
