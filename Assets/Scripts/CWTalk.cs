@@ -18,6 +18,8 @@ public class CWTalk : MonoBehaviour
     private Transform tf;
     public bool bossCheck = false;
     public int check = 0;
+
+    public Transform Bosstf;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,20 +33,19 @@ public class CWTalk : MonoBehaviour
         textBoxtf.localScale = new Vector3(0, 0);
 
         manager = GameObject.Find("GameManager");
+
+        Bosstf = GameObject.Find("Boss").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (bossCheck)
+        if (bossCheck && GameObject.Find("Boss") != null)
         {
-            GameObject.Find("Boss").GetComponent<Transform>().position -= tf.up * .1f;
+            Bosstf.position -= tf.up * .07f;
             if (GameObject.Find("Boss").GetComponent<Transform>().position.y < -1)
             {
                 Destroy(GameObject.Find("Boss"));
-                System.Threading.Thread.Sleep(2000);
-                Destroy(textBox);
-                player.GetComponent<Controller>().state = Controller.State.Game;
             }
         }
         dist = Vector3.Distance(playertf.position, tf.position);
