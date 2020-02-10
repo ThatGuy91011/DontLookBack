@@ -50,7 +50,7 @@ public class CWTalk : MonoBehaviour
         dist = Vector3.Distance(playertf.position, tf.position);
         if (person.name != "BossDesk")
         {
-            if (dist > .1f && dist < .2f)
+            if (dist > 0f && dist < .2f)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
